@@ -9,13 +9,6 @@ const routes: Routes = [
     component: HomePageComponent,
   },
   {
-    path: 'transactions',
-    loadChildren: () =>
-      import('./transaction-list/transaction-list.module').then(
-        (m) => m.TransactionListModule
-      ),
-  },
-  {
     path: 'income/add',
     component: TransactionAddComponent,
   },
