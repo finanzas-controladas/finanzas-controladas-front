@@ -1,14 +1,13 @@
-<section class="section p-1 px-2 ml-0 has-background-info">
-  <div class="card is-small mt-4 pt-6 my-3">
-    <p
-      class="title is-3 has-text-centered my-5 is-family-primary has-text-link"
-    >
-      "El dinero no te hace feliz, pero relaja los nervios"
-    </p>
-
-    <div class="field is-medium m-2 mt-4 p-0 py-3">
+<ng-container *ngIf="transactionForm">
+  <section class="section p-1 px-2 ml-0 has-background-info">
+    <form class="card is-small mt-4 pt-6 my-3" [formGroup]="transactionForm" (ngSubmit)="sendForm()">
+      <p class="title is-3 has-text-centered my-5 is-family-primary has-text-link">
+        Nueva Transacción
+      </p>
+      
+      <div class="field is-medium m-2 mt-4 p-0 py-3">
       <p class="control has-icons-left has-icons-right">
-        <input class="input is-info" type="text" placeholder="Observación" />
+        <input class="input is-info" type="text" placeholder="Descripción" formControlName="description"/>
         <span class="icon is-small is-left has-text-black">
           <i class="fa-solid fa-eye"></i>
         </span>
@@ -16,7 +15,7 @@
     </div>
     <div class="field is-medium m-2 mt-2 p-0 py-1">
       <p class="control has-icons-left has-icons-right">
-        <input class="input is-info" type="number" placeholder="Montón" />
+        <input class="input is-info" type="number" placeholder="Monto" formControlName="amount"/>
         <span class="icon is-small is-left has-text-black">
           <i class="fa-solid fa-money-bill-1-wave"></i>
         </span>
@@ -24,7 +23,7 @@
     </div>
     <div class="field is-medium m-2 mt-5 pb-6">
       <p class="control has-icons-left">
-        <input class="input is-info" type="date" placeholder="Fecha" />
+        <input class="input is-info" type="date" placeholder="Fecha" formControlName="date"/>
         <span class="icon is-small is-left has-text-black">
           <i class="fa-solid fa-calendar-days"></i>
         </span>
@@ -32,28 +31,26 @@
     </div>
     <div class="field has-text-centered">
       <p class="control">
-        <button class="button is-danger is-outlined is-rounded">
-          Crear Gasto
+        <button class="button is-success is-outlined is-rounded" type="submit" *ngIf="incomeButton">
+          Añadir Ingreso
+        </button>
+        <button class="button is-danger is-outlined is-rounded" type="submit" *ngIf="expenseButton">
+          Añadir Gasto
         </button>
       </p>
     </div>
-    <div class="field is-align-content-space-around ml-5">
-      <span class="icon-text is-flex-direction-column m-3 ml-6">
+    <br>
+    <div class="field has-text-centered">
+      <span class="field has-text-centered">
         <span class="icon mx-3">
           <i class="fas fa-home"></i>
         </span>
         <p class="subtitle is-6">
-          <a href="#"> <strong>Inicio</strong></a>
-        </p>
-      </span>
-      <span class="icon-text is-flex-direction-column m-3 ml-6">
-        <span class="icon mx-4">
-          <i class="fa-solid fa-gear"></i>
-        </span>
-        <p class="subtitle is-6">
-          <a href="#"> <strong>Ajustes</strong></a>
+          <a routerLink=""> <strong>Inicio</strong></a>
         </p>
       </span>
     </div>
-  </div>
+    <br>
+  </form>
 </section>
+</ng-container>
